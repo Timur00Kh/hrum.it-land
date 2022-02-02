@@ -1,0 +1,32 @@
+{
+  "name": "hrum.it-land",
+  "version": "1.0.0",
+  "description": "personal website",
+  "main": "gulpfile.js",
+  "type": "module",
+  "scripts": {
+    "build": "gulp",
+    "serve": "gulp serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Timur00Kh/hrum.it-land.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Timur00Kh/hrum.it-land/issues"
+  },
+  "homepage": "https://github.com/Timur00Kh/hrum.it-land#readme",
+  "devDependencies": {
+    "@types/gulp": "^4.0.9",
+    "browser-sync": "^2.27.7",
+    "gulp": "^4.0.2",
+    "gulp-pug": "^5.0.0",
+    "gulp-sass": "^5.1.0",
+    "prettier": "^2.5.1",
+    "pug": "^3.0.2",
+    "sass": "^1.49.7"
+  }
+}
