@@ -1,8 +1,25 @@
-head
-    link(href='index.css')
+doctype html
+html(lang="en")
+    head
+        link(href='index.css', rel='stylesheet')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
 
-body
-    h1
-    script
-        include index.js
-    h2 lox2
+        title Timur Kh
+        meta(property='og:title' content="Timur Kh")
+        meta(property='og:description' content='Mostly, web developer')
+        meta(property='og:image' content='https://hrum.it/timur.png')
+        meta(property='og:type' content='profile')
+        meta(property='og:url' content='https://hrum.it/')
+    body
+        .container
+            img.img-container(src="timur.png")
+            .header_wrap
+                h1.header.flip hrum.it
+                h1.header.flip.flipped-left ti.murh
+            .text_container
+                span.text#tech
+                span#developer
+
+        script(src='https://cdn.jsdelivr.net/npm/typed.js@2.0.12')
+        script
+            include index.js

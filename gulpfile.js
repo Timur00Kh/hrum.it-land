@@ -3,6 +3,7 @@ import gulpPug from 'gulp-pug'
 import browserSync from 'browser-sync'
 import dartSass from 'sass'
 import gulpSass from 'gulp-sass'
+import autoprefixer from 'gulp-autoprefixer'
 const sass = gulpSass(dartSass)
 
 const srcFolder = './src'
@@ -17,8 +18,19 @@ function pug() {
 
 function buildStyles() {
     return gulp
-        .src(`${srcFolder}/*.scss`)
+        .src(`${srcFolder}/index.scss`)
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
+        .pipe(
+            autoprefixer({
+                cascade: false,
+            })
+        )
+        .pipe(gulp.dest(buildFolder))
+}
+
+function images() {
+    return gulp
+        .src(`${srcFolder}/*.{png,ico,jpe?g}`)
         .pipe(gulp.dest(buildFolder))
 }
 
@@ -32,8 +44,12 @@ gulp.task('serve', () => {
         'change',
         browserSync.reload
     )
+    gulp.watch(`${srcFolder}/**/*.(jpe?g|png|ico|webp)`, images).on(
+        'change',
+        browserSync.reload
+    )
 })
 
-const build = gulp.series(pug, buildStyles)
+const build = gulp.series(pug, buildStyles, images)
 
 gulp.task('default', build)

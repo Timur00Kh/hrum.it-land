@@ -1,0 +1,13 @@
+.flip {
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+    transition: transform 0.8s ease;
+
+    &.flipped-right {
+        transform: rotateY(180deg);
+    }
+
+    &.flipped-left {
+        transform: rotateY(-180deg);
+    }
+}
