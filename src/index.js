@@ -1,13 +1,8 @@
 function sleep(time) {
     return new Promise((resolve) => setTimeout(() => resolve(), time))
 }
-
-const d = Date.now()
-document.documentElement.addEventListener('click', () =>
-    console.log(Date.now() - d)
-)
 ;(async () => {
-    await sleep(1000)
+    await sleep(1200)
     const [header1, header2] = document.querySelectorAll('.header_wrap .header')
     header1.classList.add('flipped-right')
     header2.classList.remove('flipped-left')
