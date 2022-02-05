@@ -11,7 +11,7 @@ const buildFolder = './dist'
 
 function pug() {
     return gulp
-        .src(`${srcFolder}/*.pug`)
+        .src(`${srcFolder}/index.pug`)
         .pipe(gulpPug())
         .pipe(gulp.dest(buildFolder))
 }
@@ -28,10 +28,9 @@ function buildStyles() {
         .pipe(gulp.dest(buildFolder))
 }
 
+const imgExt = '{png,ico,jpe?g,svg}'
 function images() {
-    return gulp
-        .src(`${srcFolder}/*.{png,ico,jpe?g}`)
-        .pipe(gulp.dest(buildFolder))
+    return gulp.src(`${srcFolder}/**/*.${imgExt}`).pipe(gulp.dest(buildFolder))
 }
 
 gulp.task('serve', () => {
@@ -39,12 +38,15 @@ gulp.task('serve', () => {
         server: buildFolder,
     })
 
-    gulp.watch(`${srcFolder}/*.(pug|js)`, pug).on('change', browserSync.reload)
-    gulp.watch(`${srcFolder}/*.scss`, buildStyles).on(
+    gulp.watch(`${srcFolder}/**/*.(pug|js)`, pug).on(
         'change',
         browserSync.reload
     )
-    gulp.watch(`${srcFolder}/**/*.(jpe?g|png|ico|webp)`, images).on(
+    gulp.watch(`${srcFolder}/**/*.scss`, buildStyles).on(
+        'change',
+        browserSync.reload
+    )
+    gulp.watch(`${srcFolder}/**/*.${imgExt}`, images).on(
         'change',
         browserSync.reload
     )
