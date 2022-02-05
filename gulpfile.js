@@ -4,6 +4,7 @@ import browserSync from 'browser-sync'
 import dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 import autoprefixer from 'gulp-autoprefixer'
+import version from 'gulp-version-number'
 const sass = gulpSass(dartSass)
 
 const srcFolder = './src'
@@ -13,6 +14,14 @@ function pug() {
     return gulp
         .src(`${srcFolder}/index.pug`)
         .pipe(gulpPug())
+        .pipe(
+            version({
+                append: {
+                    to: ['css', 'js'],
+                },
+                output: `${buildFolder}/version.json`,
+            })
+        )
         .pipe(gulp.dest(buildFolder))
 }
 
