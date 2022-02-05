@@ -68,13 +68,17 @@ $img-size: calc(40vh - 5vw);
 
 .contacts {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    padding: 0 12px;
     margin-top: 40px;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+
     .icon {
         width: calc(5vh - 0.5vw);
         height: calc(5vh - 0.5vw);
-        margin: 0 1rem;
         transform: scale(1);
         transition: transform 0.4s ease;
 
