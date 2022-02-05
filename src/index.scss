@@ -75,7 +75,7 @@ $img-size: calc(40vh - 5vw);
         height: calc(5vh - 0.5vw);
         margin: 0 1rem;
         transform: scale(1);
-        transition: transform 0.8s ease;
+        transition: transform 0.4s ease;
 
         &:hover {
             transform: scale(1.2);
