@@ -9,7 +9,7 @@ function sleep(time) {
 
     await sleep(1000)
     new Typed(header2, {
-        strings: ['ti.murh', 'Timur H', 'Timur Kh'],
+        strings: ['timur.kh', 'Timur Kh'],
         typeSpeed: 80,
         backDelay: 1200,
         backSpeed: 50,
