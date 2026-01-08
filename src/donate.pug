@@ -1,0 +1,72 @@
+doctype html
+html(lang="ru")
+    head
+        link(href='donate.css', rel='stylesheet')
+        meta(name='viewport' content='width=device-width, initial-scale=1')
+
+        title Поддержка - Timur Kh
+        meta(property='og:title' content="Поддержка - Timur Kh")
+        meta(property='og:description' content='Способы поддержать и полезные ссылки')
+        meta(property='og:image' content='https://mithk.ru/timur.png')
+        meta(property='og:type' content='website')
+        meta(property='og:url' content='https://mithk.ru/donate')
+    body
+        .container
+            .header-section
+                a.back-link(href='/') ← На главную
+                h1.title Поддержка
+                //- p.subtitle Способы поддержать меня и полезные ссылки
+                p.description Ниже представлены реферальные ссылки на сервисы, которыми я пользуюсь. Если вы оформите что-то по этим ссылкам, я получу небольшое вознаграждение, а вы — те же условия или даже лучше.
+
+            .referrals-list
+                .referral-card
+                    .referral-header
+                        h2.referral-name T-Банк Premium
+                        span.referral-date 2026-01
+                    .referral-content
+                        .referral-review
+                            p Маст хэв во время путешествия. Включает страховку путешественника и 2 проходки в бизнес-залы в месяц. Первый месяц бесплатно, далее 3к рублей в месяц. После путешествия можно отменить подписку. Есть дополнительная скидка при покупке билетов и отелей через сервисы Т-банка.
+                        .referral-links
+                            a.referral-link(href='https://tbank.ru/baf/4IAt5tTbNXw' target='_blank' rel='noopener noreferrer')
+                                | Перейти
+
+                .referral-card
+                    .referral-header
+                        h2.referral-name T-Банк
+                        span.referral-date 2026-01
+                    .referral-content
+                        .referral-review
+                            p Если хотите поддержать меня, можете оформить любой продукт Т-банка по моей ссылке.
+                        .referral-links
+                            a.referral-link(href='https://tbank.ru/baf/6V6GXvja6vS' target='_blank' rel='noopener noreferrer')
+                                | Перейти
+
+                .referral-card
+                    .referral-header
+                        h2.referral-name Firstbyte
+                        span.referral-date 2026-01
+                    .referral-content
+                        .referral-review
+                            p Использую уже несколько лет. Один из самых доступных хостингов с ISP панелью. Хороший выбор локаций для VPS по разным странам.
+                        .referral-links
+                            a.referral-link(href='https://firstbyte.ru/?from=19090' target='_blank' rel='noopener noreferrer')
+                                | Перейти
+                            .promo-code
+                                span.promo-label Промокод:
+                                code.promo-value refer_19090
+                                button.copy-btn(data-copy='refer_19090') Копировать
+
+                .referral-card
+                    .referral-header
+                        h2.referral-name RDP OneDash
+                        span.referral-date 2026-01
+                    .referral-content
+                        .referral-review
+                            p Недавно начал использовать. Минимальные цены и положительные отзывы. Пока всё работает стабильно. Нет расширенной панели управления, но за такую цену это ожидаемо.
+                        .referral-links
+                            a.referral-link(href='https://rdp-onedash.ru/r/9876f' target='_blank' rel='noopener noreferrer')
+                                | Перейти
+
+        script
+            include donate.js
+

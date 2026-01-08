@@ -12,7 +12,7 @@ const buildFolder = './dist'
 
 function pug() {
     return gulp
-        .src(`${srcFolder}/index.pug`)
+        .src(`${srcFolder}/*.pug`)
         .pipe(gulpPug())
         .pipe(
             version({
@@ -27,7 +27,7 @@ function pug() {
 
 function buildStyles() {
     return gulp
-        .src(`${srcFolder}/index.scss`)
+        .src(`${srcFolder}/*.scss`)
         .pipe(sass({ outputStyle: 'compressed' }).on('error', sass.logError))
         .pipe(
             autoprefixer({
@@ -47,10 +47,8 @@ gulp.task('serve', () => {
         server: buildFolder,
     })
 
-    gulp.watch(`${srcFolder}/**/*.(pug|js)`, pug).on(
-        'change',
-        browserSync.reload
-    )
+    gulp.watch(`${srcFolder}/**/*.pug`, pug).on('change', browserSync.reload)
+    gulp.watch(`${srcFolder}/**/*.js`, pug).on('change', browserSync.reload)
     gulp.watch(`${srcFolder}/**/*.scss`, buildStyles).on(
         'change',
         browserSync.reload
