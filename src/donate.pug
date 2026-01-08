@@ -1,7 +1,7 @@
 doctype html
 html(lang="ru")
     head
-        link(href='donate.css', rel='stylesheet')
+        link(href='/donate.css', rel='stylesheet')
         meta(name='viewport' content='width=device-width, initial-scale=1')
 
         title Поддержка - Timur Kh
@@ -67,6 +67,5 @@ html(lang="ru")
                             a.referral-link(href='https://rdp-onedash.ru/r/9876f' target='_blank' rel='noopener noreferrer')
                                 | Перейти
 
-        script
-            include donate.js
+        script(src='/donate.js')
 

@@ -5,14 +5,16 @@ import dartSass from 'sass'
 import gulpSass from 'gulp-sass'
 import autoprefixer from 'gulp-autoprefixer'
 import version from 'gulp-version-number'
+import { Transform } from 'stream'
 const sass = gulpSass(dartSass)
 
 const srcFolder = './src'
 const buildFolder = './dist'
 
 function pug() {
-    return gulp
-        .src(`${srcFolder}/*.pug`)
+    // Обрабатываем index.pug отдельно
+    const indexFiles = gulp
+        .src(`${srcFolder}/index.pug`)
         .pipe(gulpPug())
         .pipe(
             version({
@@ -23,6 +25,40 @@ function pug() {
             })
         )
         .pipe(gulp.dest(buildFolder))
+
+    // Обрабатываем donate.pug отдельно и переименовываем в index.html
+    const renameTransform = new Transform({
+        objectMode: true,
+        transform(file, encoding, callback) {
+            // Переименовываем donate.html в index.html
+            // file.stem содержит имя файла без расширения
+            if (
+                file.stem === 'donate' ||
+                file.basename === 'donate' ||
+                file.basename === 'donate.html'
+            ) {
+                file.basename = 'index'
+                file.extname = '.html'
+            }
+            callback(null, file)
+        },
+    })
+
+    const donateFile = gulp
+        .src(`${srcFolder}/donate.pug`)
+        .pipe(gulpPug())
+        .pipe(
+            version({
+                append: {
+                    to: ['css', 'js'],
+                },
+                output: `${buildFolder}/version.json`,
+            })
+        )
+        .pipe(renameTransform)
+        .pipe(gulp.dest(`${buildFolder}/donate`))
+
+    return Promise.all([indexFiles, donateFile])
 }
 
 function buildStyles() {
