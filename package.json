@@ -4,6 +4,9 @@
   "description": "personal website",
   "main": "gulpfile.js",
   "type": "module",
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "scripts": {
     "build": "gulp",
     "serve": "gulp serve",
