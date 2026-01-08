@@ -1,0 +1,98 @@
+---
+globs: src/donate.pug,src/donate.scss
+alwaysApply: false
+---
+# Правила для работы с проектом hrum.it-land
+
+## Страница поддержки (/donate)
+
+При добавлении новых реферальных ссылок на страницу поддержки (`src/donate.pug`), следуй следующим правилам:
+
+### Структура карточки реферальной ссылки
+
+Каждая новая карточка должна иметь следующую структуру:
+
+```pug
+.referral-card
+    .referral-header
+        h2.referral-name Название сервиса
+        span.referral-date YYYY-MM
+    .referral-content
+        .referral-review
+            p Краткий отзыв (2-3 предложения). Пиши в стиле отзыва, не раздувай текст.
+        .referral-links
+            a.referral-link(href='РЕФЕРАЛЬНАЯ_ССЫЛКА' target='_blank' rel='noopener noreferrer')
+                | Перейти
+            // Опционально: промокод (если есть)
+            .promo-code
+                span.promo-label Промокод:
+                code.promo-value ПРОМОКОД
+                button.copy-btn(data-copy='ПРОМОКОД') Копировать
+```
+
+### Правила оформления:
+
+1. **Дата**: Используй формат `YYYY-MM` (например, `2026-01`). Всегда используй текущий год и месяц.
+
+2. **Отзыв**:
+
+    - Длина: 2-3 предложения максимум
+    - Стиль: как отзыв, не рекламный текст
+    - Содержание: личный опыт использования, ключевые преимущества, кратко о минусах (если есть)
+
+3. **Реферальная ссылка**:
+
+    - Всегда добавляй `target='_blank'` и `rel='noopener noreferrer'`
+    - Текст кнопки: просто "Перейти"
+
+4. **Промокод** (если есть):
+
+    - Добавляй блок `.promo-code` только если есть промокод
+    - Используй атрибут `data-copy` на кнопке с значением промокода
+
+5. **Порядок карточек**:
+    - Важные/приоритетные сервисы размещай выше
+    - Новые карточки можно добавлять в любое место списка по приоритету
+
+### Примеры:
+
+**С промокодом:**
+
+```pug
+.referral-card
+    .referral-header
+        h2.referral-name Firstbyte
+        span.referral-date 2026-01
+    .referral-content
+        .referral-review
+            p Использую уже несколько лет. Один из самых доступных хостингов с ISP панелью. Хороший выбор локаций для VPS по разным странам.
+        .referral-links
+            a.referral-link(href='https://firstbyte.ru/?from=19090' target='_blank' rel='noopener noreferrer')
+                | Перейти
+            .promo-code
+                span.promo-label Промокод:
+                code.promo-value refer_19090
+                button.copy-btn(data-copy='refer_19090') Копировать
+```
+
+**Без промокода:**
+
+```pug
+.referral-card
+    .referral-header
+        h2.referral-name RDP OneDash
+        span.referral-date 2026-01
+    .referral-content
+        .referral-review
+            p Недавно начал использовать. Минимальные цены и положительные отзывы. Пока всё работает стабильно. Нет расширенной панели управления, но за такую цену это ожидаемо.
+        .referral-links
+            a.referral-link(href='https://rdp-onedash.ru/r/9876f' target='_blank' rel='noopener noreferrer')
+                | Перейти
+```
+
+### Важные замечания:
+
+-   Не меняй существующую структуру файла без необходимости
+-   Сохраняй единый стиль отзывов (кратко, по делу, как отзыв)
+-   Всегда проверяй актуальность даты (текущий год и месяц)
+-   Стили уже определены в `donate.scss`, дополнительные стили не нужны
